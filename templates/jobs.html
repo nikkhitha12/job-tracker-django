@@ -1,0 +1,26 @@
+<h2>Job Tracker</h2>
+<p>Welcome {{ request.user.username }}</p>
+
+<form method="post">
+  {% csrf_token %}
+  <input name="company" placeholder="Company" required>
+  <input name="role" placeholder="Role" required>
+  <button>Add Job</button>
+</form>
+
+<hr>
+
+<table border="1">
+<tr>
+  <th>Company</th>
+  <th>Role</th>
+</tr>
+{% for job in jobs %}
+<tr>
+  <td>{{ job.company }}</td>
+  <td>{{ job.role }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<a href="/logout/">Logout</a>
